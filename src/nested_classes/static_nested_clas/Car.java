@@ -22,17 +22,17 @@ public class Car {
 
 
     public static class Engine{
-        int horsPwer;
+        int horsPower;
 
         public Engine(int horsPwer) {
-            this.horsPwer = horsPwer;
+            this.horsPower = horsPwer;
         }
 
 
         @Override
         public String toString() {
             return "My Engine{" +
-                    "horsPwer=" + horsPwer +
+                    "horsPwer=" + horsPower +
                     '}';
         }
     }

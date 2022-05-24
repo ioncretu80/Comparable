@@ -2,6 +2,8 @@ package strim;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Test8Collect {
     public static void main(String[] args) {
@@ -19,6 +21,27 @@ public class Test8Collect {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+        System.out.println(students);
+
+//grupare dupa ceva
+        Map<Integer, List<Student>> map = students.stream().map(el -> {
+            el.setName(el.getName().toUpperCase());
+            return el;
+        }).collect(Collectors.groupingBy(el -> el.getCourse()));
+
+        for (Map.Entry<Integer, List<Student>> entry: map.entrySet()){
+            System.out.println(entry.getKey() + " : "+ entry.getValue().toString());
+        }
+
+ //partajare dupa un criteriu
+        Map<Boolean, List<Student>> map1 = students.stream().collect(Collectors.partitioningBy(el -> el.getAvgGrade() > 7.0));
+
+        for (Map.Entry<Boolean, List<Student>> entry: map1.entrySet()){
+            System.out.println(entry.getKey() + " : "+ entry.getValue().toString());
+        }
+
+
+
 
 
         //
